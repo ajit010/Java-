@@ -1,0 +1,39 @@
+interface Observer {
+    void update(String message);
+}
+
+class NewsAgency {
+    private List<Observer> observers = new ArrayList<>();
+    private String message;
+    
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    }
+    
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
+    
+    public void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.update(message);
+        }
+    }
+    
+    public void setMessage(String message) {
+        this.message = message;
+        notifyObservers();
+    }
+}
+
+class Subscriber implements Observer {
+    private String name;
+    
+    public Subscriber(String name) {
+        this.name = name;
+    }
+    
+    public void update(String message) {
+        System.out.println(name + " received message: " + message);
+    }
+}
