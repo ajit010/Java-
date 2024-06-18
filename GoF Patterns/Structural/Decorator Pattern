@@ -1,0 +1,24 @@
+interface Text {
+    String getText();
+}
+
+class SimpleText implements Text {
+    public String getText() { return "Simple Text"; }
+}
+
+class TextDecorator implements Text {
+    protected Text decoratedText;
+    
+    public TextDecorator(Text decoratedText) { this.decoratedText = decoratedText; }
+    public String getText() { return decoratedText.getText(); }
+}
+
+class BoldText extends TextDecorator {
+    public BoldText(Text decoratedText) { super(decoratedText); }
+    public String getText() { return decoratedText.getText() + " with Bold"; }
+}
+
+class ItalicText extends TextDecorator {
+    public ItalicText(Text decoratedText) { super(decoratedText); }
+    public String getText() { return decoratedText.getText() + " with Italic"; }
+}
