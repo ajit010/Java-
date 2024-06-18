@@ -1,0 +1,21 @@
+// Bad Example: Subclass that breaks the behavior of the superclass
+class Bird {
+    void fly() { /* logic to fly */ }
+}
+
+class Ostrich extends Bird {
+    void fly() { throw new UnsupportedOperationException(); }
+}
+
+// Good Example: Using a more appropriate hierarchy
+class Bird {
+    void move() { /* logic to move */ }
+}
+
+class FlyingBird extends Bird {
+    void fly() { /* logic to fly */ }
+}
+
+class Ostrich extends Bird {
+    void move() { /* logic to walk */ }
+}
