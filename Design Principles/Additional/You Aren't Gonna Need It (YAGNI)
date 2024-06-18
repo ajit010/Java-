@@ -1,0 +1,11 @@
+// Bad Example: Adding unnecessary features
+class FeatureRichClass {
+    void featureA() { /* logic for feature A */ }
+    void featureB() { /* logic for feature B */ }
+    void featureC() { /* logic for feature C */ }
+}
+
+// Good Example: Implementing only required features
+class SimpleClass {
+    void requiredFeature() { /* logic for required feature */ }
+}
