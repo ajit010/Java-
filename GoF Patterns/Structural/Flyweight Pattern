@@ -1,0 +1,59 @@
+import java.util.HashMap;
+
+interface Tree {
+    void display(int x, int y);
+}
+
+class TreeType implements Tree {
+    private String name;
+    private String color;
+    private String texture;
+    
+    public TreeType(String name, String color, String texture) {
+        this.name = name;
+        this.color = color;
+        this.texture = texture;
+    }
+    
+    public void display(int x, int y) {
+        System.out.println("Tree: " + name + " at (" + x + ", " + y + ")");
+    }
+}
+
+class TreeFactory {
+    private static final HashMap<String, TreeType> treeTypes = new HashMap<>();
+    
+    public static TreeType getTreeType(String name, String color, String texture) {
+        TreeType result = treeTypes.get(name);
+        if (result == null) {
+            result = new TreeType(name, color, texture);
+            treeTypes.put(name, result);
+        }
+        return result;
+    }
+}
+
+class Forest {
+    private List<Tree> trees = new ArrayList<>();
+    
+    public void plantTree(int x, int y, String name, String color, String texture) {
+        TreeType type = TreeFactory.getTreeType(name, color, texture);
+        trees.add(new TreeInstance(x, y, type));
+    }
+}
+
+class TreeInstance implements Tree {
+    private int x;
+    private int y;
+    private TreeType type;
+    
+    public TreeInstance(int x, int y, TreeType type) {
+        this.x = x;
+        this.y = y;
+        this.type = type;
+    }
+    
+    public void display(int x, int y) {
+        type.display(this.x, this.y);
+    }
+}
