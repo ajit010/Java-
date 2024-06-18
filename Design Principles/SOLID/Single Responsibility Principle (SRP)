@@ -1,0 +1,14 @@
+// Bad Example: A class with multiple responsibilities
+class User {
+    void addUser() { /* logic to add user */ }
+    void generateReport() { /* logic to generate user report */ }
+}
+
+// Good Example: Separate classes for separate responsibilities
+class User {
+    void addUser() { /* logic to add user */ }
+}
+
+class UserReport {
+    void generateReport() { /* logic to generate user report */ }
+}
