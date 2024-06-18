@@ -1,0 +1,28 @@
+interface Color {
+    void applyColor();
+}
+
+class RedColor implements Color {
+    public void applyColor() { System.out.println("Red color applied."); }
+}
+
+class GreenColor implements Color {
+    public void applyColor() { System.out.println("Green color applied."); }
+}
+
+abstract class Shape {
+    protected Color color;
+    
+    protected Shape(Color color) { this.color = color; }
+    abstract void applyColor();
+}
+
+class Triangle extends Shape {
+    public Triangle(Color color) { super(color); }
+    public void applyColor() { System.out.print("Triangle filled with color "); color.applyColor(); }
+}
+
+class Pentagon extends Shape {
+    public Pentagon(Color color) { super(color); }
+    public void applyColor() { System.out.print("Pentagon filled with color "); color.applyColor(); }
+}
