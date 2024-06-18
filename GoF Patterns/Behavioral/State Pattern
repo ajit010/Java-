@@ -1,0 +1,36 @@
+interface State {
+    void doAction(TrafficLightContext context);
+}
+
+class RedLightState implements State {
+    public void doAction(TrafficLightContext context) {
+        System.out.println("Red Light");
+        context.setState(this);
+    }
+}
+
+class GreenLightState implements State {
+    public void doAction(TrafficLightContext context) {
+        System.out.println("Green Light");
+        context.setState(this);
+    }
+}
+
+class YellowLightState implements State {
+    public void doAction(TrafficLightContext context) {
+        System.out.println("Yellow Light");
+        context.setState(this);
+    }
+}
+
+class TrafficLightContext {
+    private State state;
+    
+    public void setState(State state) {
+        this.state = state;
+    }
+    
+    public State getState() {
+        return state;
+    }
+}
