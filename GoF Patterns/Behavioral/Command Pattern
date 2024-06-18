@@ -1,0 +1,35 @@
+interface Command {
+    void execute();
+}
+
+class Document {
+    public void open() { System.out.println("Document Opened"); }
+    public void save() { System.out.println("Document Saved"); }
+}
+
+class OpenCommand implements Command {
+    private Document doc;
+    
+    public OpenCommand(Document doc) { this.doc = doc; }
+    public void execute() { doc.open(); }
+}
+
+class SaveCommand implements Command {
+    private Document doc;
+    
+    public SaveCommand(Document doc) { this.doc = doc; }
+    public void execute() { doc.save(); }
+}
+
+class MenuOptions {
+    private Command openCommand;
+    private Command saveCommand;
+    
+    public MenuOptions(Command open, Command save) {
+        this.openCommand = open;
+        this.saveCommand = save;
+    }
+    
+    public void clickOpen() { openCommand.execute(); }
+    public void clickSave() { saveCommand.execute(); }
+}
