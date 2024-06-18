@@ -1,1 +1,32 @@
+// Bad Example: High-level module depends on low-level module
+class Light {
+    void turnOn() { /* logic to turn on the light */ }
+    void turnOff() { /* logic to turn off the light */ }
+}
 
+class Switch {
+    private Light light;
+    Switch(Light light) {
+        this.light = light;
+    }
+    void operate() { light.turnOn(); }
+}
+
+// Good Example: Both modules depend on an abstraction
+interface Switchable {
+    void turnOn();
+    void turnOff();
+}
+
+class Light implements Switchable {
+    public void turnOn() { /* logic to turn on the light */ }
+    public void turnOff() { /* logic to turn off the light */ }
+}
+
+class Switch {
+    private Switchable device;
+    Switch(Switchable device) {
+        this.device = device;
+    }
+    void operate() { device.turnOn(); }
+}
