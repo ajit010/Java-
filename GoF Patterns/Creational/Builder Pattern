@@ -1,0 +1,31 @@
+class House {
+    private String foundation;
+    private String structure;
+    private String roof;
+    private String interior;
+    
+    public void setFoundation(String foundation) { this.foundation = foundation; }
+    public void setStructure(String structure) { this.structure = structure; }
+    public void setRoof(String roof) { this.roof = roof; }
+    public void setInterior(String interior) { this.interior = interior; }
+}
+
+interface HouseBuilder {
+    void buildFoundation();
+    void buildStructure();
+    void buildRoof();
+    void buildInterior();
+    House getHouse();
+}
+
+class ConcreteHouseBuilder implements HouseBuilder {
+    private House house;
+    
+    public ConcreteHouseBuilder() { this.house = new House(); }
+    
+    public void buildFoundation() { house.setFoundation("Concrete Foundation"); }
+    public void buildStructure() { house.setStructure("Concrete Structure"); }
+    public void buildRoof() { house.setRoof("Concrete Roof"); }
+    public void buildInterior() { house.setInterior("Concrete Interior"); }
+    public House getHouse() { return this.house; }
+}
