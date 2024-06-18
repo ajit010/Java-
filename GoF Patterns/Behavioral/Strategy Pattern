@@ -1,0 +1,71 @@
+interface PaymentStrategy {
+    void pay(int amount);
+}
+
+class CreditCardStrategy implements PaymentStrategy {
+    private String cardNumber;
+    
+    public CreditCardStrategy(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+    
+    public void pay(int amount) {
+        System.out.println(amount + " paid with credit card");
+    }
+}
+
+class PayPalStrategy implements PaymentStrategy {
+    private String emailId;
+    
+    public PayPalStrategy(String emailId) {
+        this.emailId = emailId;
+    }
+    
+    public void pay(int amount) {
+        System.out.println(amount + " paid using PayPal");
+    }
+}
+
+class ShoppingCart {
+    private List<Item> items;
+    private PaymentStrategy paymentStrategy;
+    
+    public ShoppingCart() {
+        items = new ArrayList<>();
+    }
+    
+    public void addItem(Item item) {
+        items.add(item);
+    }
+    
+    public void setPaymentStrategy(PaymentStrategy paymentStrategy) {
+        this.paymentStrategy = paymentStrategy;
+    }
+    
+    public void checkout() {
+        int total = calculateTotal();
+        paymentStrategy.pay(total);
+    }
+    
+    private int calculateTotal() {
+        int sum = 0;
+        for (Item item : items) {
+            sum += item.getPrice();
+        }
+        return sum;
+    }
+}
+
+class Item {
+    private String name;
+    private int price;
+    
+    public Item(String name, int price) {
+        this.name = name;
+        this.price = price;
+    }
+    
+    public int getPrice() {
+        return price;
+    }
+}
