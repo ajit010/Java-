@@ -1,0 +1,13 @@
+// Bad Example: Overcomplicated design
+class ComplexSystem {
+    void performComplexOperation() {
+        // complex logic with many unnecessary steps
+    }
+}
+
+// Good Example: Simple and straightforward design
+class SimpleSystem {
+    void performSimpleOperation() {
+        // simple logic
+    }
+}
